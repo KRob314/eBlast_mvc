@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/autoValidate-modal.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+
+
+</head>
+<body>
+    @if(ViewBag.Success == true)
+    {
+       <script>
+           $(document).ready(function ()
+           {
+               showModal("Your transaction was successful!");            
+           });
+       </script>
+    };
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("eBlast_mvc", "Index", "Contact", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contacts <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li> <a href="/Contact/Add">Add </a></li>
+                        <li> <a href="/Contact/Index" >View</a></li>
+                    </ul>
+                </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Groups <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li> <a href="/ContactGroups/Add">Add</a></li>
+                            <li> <a href="/ContactGroups/Index">View</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Email Templates <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li> <a href="/EmailTemplate/Add">Add</a></li>
+                            <li> <a href="/EmailTemplate/Index">View</a></li>
+                        </ul>
+                    </li>
+                    <li> <a href="/Email/Send">Send Eamil</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <article class="container body-content margin-top-30">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - eBlast_mvc</p>
+        </footer>
+    </article>
+
+   
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/autoValidate-modal.js"></script>
+</body>
+</html>

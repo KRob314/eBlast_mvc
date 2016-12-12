@@ -1,0 +1,32 @@
+﻿@model eBlast_mvc.ViewModels.EmailTemplateViewModel
+
+<h2>Add an Email Template</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+
+
+    <div class="row margin-top-30">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @maxlength= 50, @class="form-control" })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-8">
+            @Html.LabelFor(m => m.Subject)
+            @Html.TextBoxFor(m => m.Subject, new {@maxlength = 75, @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+   <div class="row margin-top-15">
+       <div class="col-md-12">
+           @Html.LabelFor(m => m.Body)
+           @Html.Partial("_htmlEditor" )
+           @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+       </div>
+   </div>
+
+    <input type="submit" id="btnSave" value="Save" class="btn btn-primary"/>
+}
